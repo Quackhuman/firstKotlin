@@ -24,6 +24,13 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent,1)
             Toast.makeText(this,"点击了button1按钮",Toast.LENGTH_SHORT).show()
         }
+        val button2 : Button = findViewById(R.id.button2)
+        button2.setOnClickListener {
+            val intent2 = Intent("android.intent.action.FORTH")
+            startActivity(intent2)
+            Toast.makeText(this,"点击了button1_2按钮",Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
