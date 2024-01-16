@@ -21,5 +21,13 @@ class SecondActivity : AppCompatActivity() {
             intent.putExtra("extra_data",data)
             startActivity(intent)
         }
+
+        val buttonFinish: Button = findViewById(R.id.button_finish)
+        buttonFinish.setOnClickListener {
+            val intent = Intent()
+            intent.putExtra("data_return","你好，页面1")
+            setResult(RESULT_OK,intent)
+            finish()
+        }
     }
 }

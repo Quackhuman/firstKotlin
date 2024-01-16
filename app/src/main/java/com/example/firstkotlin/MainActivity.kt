@@ -21,8 +21,18 @@ class MainActivity : AppCompatActivity() {
         val button1 : Button = findViewById(R.id.button1)
         button1.setOnClickListener {
             val intent = Intent("com.example.activitytest.ACTION_START")
-            startActivity(intent)
+            startActivityForResult(intent,1)
             Toast.makeText(this,"点击了button1按钮",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode){
+            1 -> if(resultCode == RESULT_OK){
+                val returnedData = data?.getStringExtra("data_return")
+                Toast.makeText(this,returnedData,Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
