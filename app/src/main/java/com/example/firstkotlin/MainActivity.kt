@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.firstkotlin.RView.FifthActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,13 @@ class MainActivity : AppCompatActivity() {
             val intent2 = Intent("android.intent.action.FORTH")
             startActivity(intent2)
             Toast.makeText(this,"点击了button1_2按钮",Toast.LENGTH_SHORT).show()
+        }
+
+        val button3 : Button = findViewById(R.id.button3)
+        button3.setOnClickListener {
+            val intent3 = Intent(this,FifthActivity::class.java)
+            startActivity(intent3)
+            Toast.makeText(this,"点击了button1_3按钮",Toast.LENGTH_SHORT).show()
         }
 
     }
