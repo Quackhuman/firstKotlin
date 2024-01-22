@@ -41,10 +41,10 @@ class ClickCounterLD:AppCompatActivity() {
             viewModel.clear()
         }
 
-        viewModel.counter.observe(this, Observer { counterReserved ->
+        viewModel.counter.observe(this) { count ->
             val infoText = findViewById<TextView>(R.id.infoText)
-            infoText.text = counterReserved.toString()
-        })
+            infoText.text = count.toString()
+        }
 
 
     }
