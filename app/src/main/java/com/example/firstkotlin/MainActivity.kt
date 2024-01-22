@@ -1,30 +1,39 @@
 package com.example.firstkotlin
 
 import android.content.Intent
-import android.net.Uri
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.firstkotlin.RView.FifthActivity
+import com.example.firstkotlin.ViewModel.ClickCounter
+import com.example.firstkotlin.ViewModel.MainViewModel
+import com.example.firstkotlin.ViewModel.VMLivingData.ClickCounterLD
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var viewModel : MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        //按钮1的跳转设置
         val button1 : Button = findViewById(R.id.button1)
         button1.setOnClickListener {
             val intent = Intent("com.example.activitytest.ACTION_START")
             startActivityForResult(intent,1)
             Toast.makeText(this,"点击了button1按钮",Toast.LENGTH_SHORT).show()
         }
+
+        //按钮2的跳转设置
         val button2 : Button = findViewById(R.id.button2)
         button2.setOnClickListener {
             val intent2 = Intent("android.intent.action.FORTH")
@@ -32,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"点击了button1_2按钮",Toast.LENGTH_SHORT).show()
         }
 
+        //按钮3的跳转设置
         val button3 : Button = findViewById(R.id.button3)
         button3.setOnClickListener {
             val intent3 = Intent(this,FifthActivity::class.java)
@@ -39,6 +49,43 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"点击了button1_3按钮",Toast.LENGTH_SHORT).show()
         }
 
+        //按钮4的跳转设置
+        val button4 : Button = findViewById(R.id.button4)
+        button4.setOnClickListener {
+            val intent4 = Intent(this,ClickCounter::class.java)
+            startActivity(intent4)
+            Toast.makeText(this,"点击了button1_4 VM按钮",Toast.LENGTH_SHORT).show()
+        }
+
+        //按钮5的跳转设置
+        val button5 : Button = findViewById(R.id.button5)
+        button5.setOnClickListener {
+            val intent5 = Intent(this,ClickCounterLD::class.java)
+            startActivity(intent5)
+            Toast.makeText(this,"点击了button1_5 VMLD按钮",Toast.LENGTH_SHORT).show()
+        }
+
+        //viewModel的设置
+        //不可以直接去创建ViewModel的实例，而是一定要通过ViewModelProvider来获取ViewModel的实例
+        //ViewModelProvider(<你的Activity或Fragment实例>).get(<你的ViewModel>::class.java)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        //声明按钮,设置按钮的响应
+        val plusonebtn = findViewById<Button>(R.id.plusOneBtn)
+        plusonebtn.setOnClickListener {
+            viewModel.counter++
+            //按按钮后执行动作，并把新值写入
+            refreshCounter()
+        }
+        //写入完了之后就会按顺序再到这里执行，这次展示的值就是新值
+        refreshCounter()
+
+    }
+
+    //给TextView赋值，一个方法
+    private fun refreshCounter() {
+        val infoText = findViewById<TextView>(R.id.infoText)
+        infoText.text = viewModel.counter.toString()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
