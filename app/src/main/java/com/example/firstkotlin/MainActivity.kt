@@ -74,6 +74,14 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"点击了button6 Data",Toast.LENGTH_SHORT).show()
         }
 
+        //按钮7的跳转设置
+        val button7 : Button = findViewById(R.id.button7)
+        button7.setOnClickListener {
+            val intent7 = Intent(this,WritingData::class.java)
+            startActivity(intent7)
+            Toast.makeText(this,"点击了button7 Share Preferences",Toast.LENGTH_SHORT).show()
+        }
+
         //viewModel的设置
         //不可以直接去创建ViewModel的实例，而是一定要通过ViewModelProvider来获取ViewModel的实例
         //ViewModelProvider(<你的Activity或Fragment实例>).get(<你的ViewModel>::class.java)
