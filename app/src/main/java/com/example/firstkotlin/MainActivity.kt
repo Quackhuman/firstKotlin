@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.firstkotlin.Data.WritingData
 import com.example.firstkotlin.RView.FifthActivity
 import com.example.firstkotlin.ViewModel.ClickCounter
 import com.example.firstkotlin.ViewModel.MainViewModel
@@ -63,6 +64,14 @@ class MainActivity : AppCompatActivity() {
             val intent5 = Intent(this,ClickCounterLD::class.java)
             startActivity(intent5)
             Toast.makeText(this,"点击了button1_5 VMLD按钮",Toast.LENGTH_SHORT).show()
+        }
+
+        //按钮6的跳转设置
+        val button6 : Button = findViewById(R.id.button6)
+        button6.setOnClickListener {
+            val intent6 = Intent(this,WritingData::class.java)
+            startActivity(intent6)
+            Toast.makeText(this,"点击了button6 Data",Toast.LENGTH_SHORT).show()
         }
 
         //viewModel的设置
