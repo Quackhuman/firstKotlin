@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.firstkotlin.Data.SharedPreferencesTest
 import com.example.firstkotlin.Data.WritingData
 import com.example.firstkotlin.RView.FifthActivity
 import com.example.firstkotlin.ViewModel.ClickCounter
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         //按钮7的跳转设置
         val button7 : Button = findViewById(R.id.button7)
         button7.setOnClickListener {
-            val intent7 = Intent(this,WritingData::class.java)
+            val intent7 = Intent(this,SharedPreferencesTest::class.java)
             startActivity(intent7)
             Toast.makeText(this,"点击了button7 Share Preferences",Toast.LENGTH_SHORT).show()
         }
