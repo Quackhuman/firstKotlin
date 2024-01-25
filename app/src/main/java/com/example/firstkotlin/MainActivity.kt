@@ -1,7 +1,6 @@
 package com.example.firstkotlin
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.firstkotlin.Data.SharedPreferencesTest
 import com.example.firstkotlin.Data.WritingData
+import com.example.firstkotlin.BroadcastReceiver.BroadcastTest
+import com.example.firstkotlin.Login.LoginActivity
 import com.example.firstkotlin.RView.FifthActivity
 import com.example.firstkotlin.ViewModel.ClickCounter
 import com.example.firstkotlin.ViewModel.MainViewModel
@@ -65,6 +66,22 @@ class MainActivity : AppCompatActivity() {
             val intent5 = Intent(this,ClickCounterLD::class.java)
             startActivity(intent5)
             Toast.makeText(this,"点击了button1_5 VMLD按钮",Toast.LENGTH_SHORT).show()
+        }
+
+        //按钮5.5的跳转设置
+        val button5_5 : Button = findViewById(R.id.button5_5)
+        button5_5.setOnClickListener {
+            val intent5_5 = Intent(this, BroadcastTest::class.java)
+            startActivity(intent5_5)
+            Toast.makeText(this,"点击了button7 Share Preferences",Toast.LENGTH_SHORT).show()
+        }
+
+        //按钮5.7的跳转设置
+        val button5_7 : Button = findViewById(R.id.button5_7)
+        button5_7.setOnClickListener {
+            val intent5_7 = Intent(this, LoginActivity::class.java)
+            startActivity(intent5_7)
+            Toast.makeText(this,"点击了button 登录页",Toast.LENGTH_SHORT).show()
         }
 
         //按钮6的跳转设置
