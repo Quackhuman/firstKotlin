@@ -16,7 +16,7 @@ class SQLData_MainActivity : AppCompatActivity() {
         //绑定按钮
         val createDatabase = findViewById<Button>(R.id.createDatabase)
 
-        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 1)
+        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 2)
         createDatabase.setOnClickListener {
             dbHelper.writableDatabase
         }
