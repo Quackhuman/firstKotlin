@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.firstkotlin.Data.SharedPreferencesTest
 import com.example.firstkotlin.Data.WritingData
 import com.example.firstkotlin.BroadcastReceiver.BroadcastTest
+import com.example.firstkotlin.Data.SqlDataBase.SQLData_MainActivity
 import com.example.firstkotlin.Login.LoginActivity
 import com.example.firstkotlin.RView.FifthActivity
 import com.example.firstkotlin.ViewModel.ClickCounter
@@ -98,6 +99,14 @@ class MainActivity : AppCompatActivity() {
             val intent7 = Intent(this,SharedPreferencesTest::class.java)
             startActivity(intent7)
             Toast.makeText(this,"点击了button7 Share Preferences",Toast.LENGTH_SHORT).show()
+        }
+
+        //按钮8的跳转设置
+        val button8 : Button = findViewById(R.id.button8)
+        button8.setOnClickListener {
+            val intent8 = Intent(this,SQLData_MainActivity::class.java)
+            startActivity(intent8)
+            Toast.makeText(this,"SQLdb",Toast.LENGTH_SHORT).show()
         }
 
         //viewModel的设置
