@@ -1,5 +1,6 @@
 package com.example.firstkotlin.Data.SqlDataBase
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -19,6 +20,30 @@ class SQLData_MainActivity : AppCompatActivity() {
         val dbHelper = MyDatabaseHelper(this, "BookStore.db", 2)
         createDatabase.setOnClickListener {
             dbHelper.writableDatabase
+        }
+
+        //绑定按钮
+        val addData = findViewById<Button>(R.id.addData)
+        addData.setOnClickListener {
+            val db = dbHelper.writableDatabase
+            val values1 = ContentValues().apply {
+                //开始组装第一条数据
+                put("name", "The Da Vinci Code")
+                put("author", "John Johnson")
+                put("pages", 454)
+                put("price", 16.96)
+
+            }
+            //插入第一条数据
+            db.insert("Book", null, values1)
+
+            val values2 = ContentValues().apply {
+                put("name", "The Lost Symbol")
+                put("author", "Dan")
+                put("pages", 510)
+                put("price", 19.95)
+            }
+            db.insert("Book", null, values2)
         }
     }
 }
