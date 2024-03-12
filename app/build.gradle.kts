@@ -1,8 +1,10 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
-
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
+
 
 android {
     namespace = "com.example.firstkotlin"
@@ -48,6 +50,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("androidx.room:room-runtime:2.5.0")
+    implementation("androidx.room:room-ktx:2.5.0")
+    annotationProcessor("androidx.room:room-compiler:2.5.0")
 //    implementation("com.google.code.gson:gson:2.10.1")
 //    implementation("androidx.sqlite:sqlite-ktx:2.1.0") // Room Persistence Library
 //    implementation("org.xerial:sqlite-jdbc:3.34.0") // SQLite JDBC 驱动程序
@@ -57,4 +62,3 @@ dependencies {
 
 
 
-}
