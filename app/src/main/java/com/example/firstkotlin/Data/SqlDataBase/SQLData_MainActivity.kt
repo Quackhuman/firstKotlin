@@ -7,7 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.firstkotlin.Data.Room.AppDatabase
+import com.example.firstkotlin.Data.Room.User
 import com.example.firstkotlin.R
+import kotlin.concurrent.thread
 
 class SQLData_MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +48,20 @@ class SQLData_MainActivity : AppCompatActivity() {
             }
             db.insert("Book", null, values2)
         }
+
+        //将UserDao实例化
+        val userDao = AppDatabase.getDatabase(this).userDao()
+        val user1 = User("Tom","Clancy",40)
+        val user2 = User("Tom","Hanks",47)
+
+        //绑定按钮
+        val addDataButton = findViewById<Button>(R.id.addDataBtn)
+        addDataButton.setOnClickListener {
+            thread {
+
+            }
+        }
+
     }
 }
 
